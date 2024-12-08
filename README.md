@@ -17,3 +17,12 @@ I wanted to test how fast postgres would be to create and read 10,000 users
 ![Screenshot 2024-12-08 224009](https://github.com/user-attachments/assets/93e46a80-58a8-42ef-a075-54de6526090c)
 
 Taking about 7 seconds in total, 3.8 seconds to write and 3.6 to read
+
+# Redis performance Example
+
+okay, in an awkward scenario, it seems like my redis query actually took much longer, taking 20.2 seconds in total
+
+![Screenshot 2024-12-08 224538](https://github.com/user-attachments/assets/35fae1cb-50a4-4b6b-b71c-8d38d1f58cc4)
+
+
+Lets check to see what the issue is
