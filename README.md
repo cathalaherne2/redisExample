@@ -26,3 +26,25 @@ okay, in an awkward scenario, it seems like my redis query actually took much lo
 
 
 Lets check to see what the issue is
+
+
+# Redis pipelining to the rescue
+
+
+so from what I can see using tools like chatGPT, the issue with the script I wrote was that it would write and read one at a time from each of the queries, and as such, it was quite slow. instead, if I used "pipe.execute()" to run a bunch of saved queries all at once, we could run a bunch of queries in parallel
+
+when I modified my code to use pipelines in redis, I saw a massive performance uplift
+
+![Screenshot 2024-12-08 231116](https://github.com/user-attachments/assets/e426d857-d5d1-40da-9822-e632ecfaee91)
+
+
+in the interest of fairness, I found the equivalent in postgres is called "bulk inserts" while it made a difference on the write side, I did not see the same uplift as redis on the read side
+
+
+
+![Screenshot 2024-12-08 231634](https://github.com/user-attachments/assets/1cf2ace6-6fe3-486f-a52d-59caac8425ed)
+
+
+To ensure that these were not just one-off instances, I reran these tests several times
+
+![Screenshot 2024-12-08 230426](https://github.com/user-attachments/assets/81556358-d023-4f13-ad47-bf7d3d2ab525)
