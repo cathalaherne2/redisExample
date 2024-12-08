@@ -12,7 +12,7 @@
 ~H
 # Command Line History (newest to oldest):
 :x
-|2,0,1733686930,,"x"
+|2,0,1733687221,,"x"
 
 # Search String History (newest to oldest):
 
@@ -25,21 +25,36 @@
 # Registers:
 
 # File marks:
-'0  6  2  ~/.gitconfig
-|4,48,6,2,1733686930,"~/.gitconfig"
+'0  4  20  ~/.gitconfig
+|4,48,4,20,1733687221,"~/.gitconfig"
+'1  6  2  ~/.gitconfig
+|4,49,6,2,1733686930,"~/.gitconfig"
+'2  6  2  ~/.gitconfig
+|4,50,6,2,1733686930,"~/.gitconfig"
 
 # Jumplist (newest first):
+-'  4  20  ~/.gitconfig
+|4,39,4,20,1733687221,"~/.gitconfig"
+-'  5  2  ~/.gitconfig
+|4,39,5,2,1733687183,"~/.gitconfig"
 -'  6  2  ~/.gitconfig
 |4,39,6,2,1733686930,"~/.gitconfig"
+-'  6  2  ~/.gitconfig
+|4,39,6,2,1733686930,"~/.gitconfig"
+-'  1  0  ~/.gitconfig
+|4,39,1,0,1733686878,"~/.gitconfig"
 -'  1  0  ~/.gitconfig
 |4,39,1,0,1733686878,"~/.gitconfig"
 
 # History of marks within files (newest to oldest):
 
 > ~/.gitconfig
-	*	1733686924	0
-	"	6	2
-	^	6	3
-	.	6	2
+	*	1733687217	0
+	"	4	20
+	^	4	21
+	.	4	20
 	+	4	21
 	+	6	2
+	+	4	0
+	+	5	31
+	+	4	20
