@@ -1,4 +1,4 @@
-# redis Example
+![image](https://github.com/user-attachments/assets/c947fde1-7eee-4fe4-8245-e45051bede44)# redis Example
 
 
 to play around with redis I have spun up a short script to use  aredis hash set to create a user
@@ -65,3 +65,8 @@ One interesting detail was that when subscribed with multiple consumers, they al
 
 
  when I was doing research, it seemed that Redis Streams would actually contain the older messages also, so I tried that out too
+
+
+# Redis streams testing
+
+I found that when using streams, I kept getting errors that the group i was publishing to didnt exist and I couldnt figure out why. It turns out that unlike redis pubsub we cannot just expect that a new topic is automatically being created, and so we need to do some validation to ensure when we write a message it is able to be consumed and not just disappearing into the ether
