@@ -48,3 +48,18 @@ in the interest of fairness, I found the equivalent in postgres is called "bulk 
 To ensure that these were not just one-off instances, I reran these tests several times
 
 ![Screenshot 2024-12-08 230426](https://github.com/user-attachments/assets/81556358-d023-4f13-ad47-bf7d3d2ab525)
+
+
+# Redis pubsub testing
+
+I wanted to see how redis pubsub compared with a solution like SQS, so at first I created a pub application, and began using the redis desktop client, but I didnt see any messages, even after I subscribed to the queue, there was no messages
+
+
+![Screenshot 2024-12-08 235250](https://github.com/user-attachments/assets/306354bd-5b52-4683-9c31-4a1cdcc783e1)
+
+when doing some digging, i found that redis pubsub is actually different to other queues that I have used in the past that you actually need to be subscribed at the time in order to hear the messages that are being sent.
+
+in my experience this is quite similar to Kinesis in AWS (with some slight differences)
+
+
+ when I was doing research, it seemed that Redis Streams would actually contain the older messages also, so I tried that out too
