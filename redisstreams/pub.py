@@ -1,6 +1,5 @@
 import redis
 import os
-import time
 
 # Retrieve Redis password from environment variable
 redis_password = os.getenv("REDIS_PASSWORD")
@@ -10,15 +9,22 @@ redis_host = "redis-18857.c2.eu-west-1-3.ec2.redns.redis-cloud.com"
 redis_port = 18857
 client = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_password, decode_responses=True)
 
-# Stream name
+# Stream and consumer group settings
 stream_name = "message_stream"
+group_name = "group1"
+
+# Ensure the stream and consumer group exist
+try:
+    client.xgroup_create(name=stream_name, groupname=group_name, id="$", mkstream=True)
+    print(f"Consumer group {group_name} created for stream {stream_name}.")
+except redis.exceptions.ResponseError as e:
+    if "BUSYGROUP" in str(e):
+        print(f"Consumer group {group_name} already exists.")
+    else:
+        raise
 
 # Produce messages
-print("Producer is running. Writing messages to the stream...")
 for i in range(10):
-    message = {"message": f"Message {i}", "timestamp": str(time.time())}
-    message_id = client.xadd(stream_name, message)  # Add message to stream
-    print(f"Produced: {message} with ID {message_id}")
-    time.sleep(1)  # Simulate delay
-
-print("All messages produced!")
+    message = {"field1": f"value-{i}", "field2": f"data-{i}"}
+    client.xadd(stream_name, message)
+    print(f"Produced message: {message}")
