@@ -79,7 +79,7 @@ I can clearly see the 200ms that it takes for the redis pipelines to execute her
 
 ![462652580_567261996050256_6345916724041212472_n](https://github.com/user-attachments/assets/eabbd5d9-1c08-43d8-a16b-2c2ab1f65a9c)
 
-when I hovered over the query I can see all of the redis insert statements that we are making (with the data inside redacted of course)
+when I hovered over the query I can see all of the redis insert statements that we are making
 
 When I run the unoptimised query, it actually takes quite a while to load as there are 20,000 spans being sent which is highly unusual for one application.
 
