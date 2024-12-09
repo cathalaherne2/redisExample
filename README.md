@@ -69,4 +69,21 @@ One interesting detail was that when subscribed with multiple consumers, they al
 
 # Redis streams testing
 
-I found that when using streams, I kept getting errors that the group i was publishing to didnt exist and I couldnt figure out why. It turns out that unlike redis pubsub we cannot just expect that a new topic is automatically being created, and so we need to do some validation to ensure when we write a message it is able to be consumed and not just disappearing into the ether
+I found that when using streams, I kept getting errors that the group i was publishing to didnt exist and I couldnt figure out why. It turns out that unlike redis pubsub we cannot just expect that a new topic is automatically being created, and so we need to do some validation to ensure when we write a message it is able to be consumed and not just disappearing into the either
+
+# Redis + Datadog testing
+I decided to instrument the redis code that I had written with Datadogs APM tool to get a better visualisation as to what exactly was going on.
+
+
+I can clearly see the 200ms that it takes for the redis pipelines to execute here 
+
+![462652580_567261996050256_6345916724041212472_n](https://github.com/user-attachments/assets/eabbd5d9-1c08-43d8-a16b-2c2ab1f65a9c)
+
+when I hovered over the query I can see all of the redis insert statements that we are making (with the data inside redacted of course)
+
+When I run the unoptimised query, it actually takes quite a while to load as there are 20,000 spans being sent which is highly unusual for one application.
+
+When it does load we see 20,000 individual spans all showing microsecond/millisecond performance, it was quite interesting
+
+![462639784_906653377863742_2152618269971130163_n](https://github.com/user-attachments/assets/fc2f6894-50eb-4952-a207-bba1dcfac20d)
+
