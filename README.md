@@ -61,5 +61,7 @@ when doing some digging, i found that redis pubsub is actually different to othe
 
 in my experience this is quite similar to Kinesis in AWS (with some slight differences)
 
+One interesting detail was that when subscribed with multiple consumers, they all receive every message, so there is a 1 to many relationship in this case. I also did not need to create a channel ahead of time like I believe I need to in SQS, I was directly able to push to the "notifications" channel
+
 
  when I was doing research, it seemed that Redis Streams would actually contain the older messages also, so I tried that out too
